@@ -51,5 +51,20 @@ public class AppService {
 //        marksRepository.deleteById(userId);
     }
 
+    public Marks updateMarks(Marks marks, int id){
+        Marks marks1 = marksRepository.findById(id).orElse(null);
+        marks1.setSubject1(marks.getSubject1());
+        marks1.setSubject2(marks.getSubject2());
+        marks1.setSubject3(marks.getSubject3());
+        marks1.setSubject4(marks.getSubject4());
+        return marksRepository.save(marks1);
+    }
+
+    public void deleteMarks(int id){
+        Marks marks = marksRepository.findById(id).orElse(null);
+        marksRepository.deleteById(id);
+//        marksRepository.deleteById(userId);
+    }
+
 
 }
